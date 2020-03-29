@@ -1,10 +1,10 @@
 :5000 {
-    proxy /v1/api/posts localhost:8000-8003 {
+    proxy /v1/api/post localhost:8000-8003 {
         transparent
         policy least_conn
         health_check /
     }
-    proxy /users localhost:8100-8103 {
+    proxy /v1/api/user localhost:8100-8103 {
         transparent
         policy least_conn
         health_check /

@@ -26,7 +26,7 @@ class UserBehavior(TaskSet):
     @task(5)
     def deactivate_acc(self):
         if (len(ACTIVE_USERS) > 0):
-            username = random.sample(ACTIVE_USERS,1)[0]
+            username = ACTIVE_USERS.pop()
             headers = {'content-type': 'application/x-www-form-urlencoded'}
             self.client.delete("/user/deactivate_acc/"+str(username),
             headers=headers,
@@ -89,7 +89,7 @@ class UserBehavior(TaskSet):
     def delete_post(self):
         if (len(SUBREDDIT)>0):
             headers = {'content-type': 'application/x-www-form-urlencoded'}
-            self.client.delete("/posts/remove_post/"+str(len(SUBREDDIT)/2+1),
+            self.client.delete("/posts/remove_post/"+str(len(SUBREDDIT)//2+1),
             headers=headers,
             name = "Delete post")
 
@@ -110,7 +110,7 @@ class UserBehavior(TaskSet):
     def retrieve_post(self):
         if (len(SUBREDDIT)>0):
             headers = {'content-type': 'application/x-www-form-urlencoded'}
-            self.client.get("/posts/retrieve_post/"+str(len(SUBREDDIT)/2+1),
+            self.client.get("/posts/retrieve_post/"+str(len(SUBREDDIT)//2+1),
             headers=headers,
             name = "Retrieve post")
 

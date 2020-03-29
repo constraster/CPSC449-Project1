@@ -103,7 +103,7 @@ def seed_db():
 
 @app.route('/')
 def index():
-    return 'Hello World'
+    return 'Hello\n', 200
 
 # Register users
 @app.route('/v1/api/user/register', methods=['POST'])

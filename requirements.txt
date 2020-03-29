@@ -94,7 +94,7 @@ python-magic==0.4.16
 pytz==2019.3
 pywinrm==0.3.0
 pyxdg==0.25
-PyYAML==3.13
+PyYAML==5.1
 pyzmq==19.0.0
 query-string==2019.4.13
 reportlab==3.5.18

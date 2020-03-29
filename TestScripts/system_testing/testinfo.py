@@ -1,6 +1,6 @@
-USER_CREDENTIALS = set(("TestUsername", "TestEmail", "TestPassword", 0))
+USER_CREDENTIALS = set()
 ACTIVE_USERS=set()
-POSTS=set(("TestTitle","TestBody","TestSub"))
+POSTS=set()
 SUBREDDIT=set()
 for i in range(1,200):
     USER_CREDENTIALS.add(("TestEmail"+str(i),"TestUsername"+str(i), "TestPassword"+str(i), 0))

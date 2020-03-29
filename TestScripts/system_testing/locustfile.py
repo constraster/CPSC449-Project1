@@ -8,7 +8,8 @@ from testinfo import *
 class UserBehavior(TaskSet):
 
     #*********************************USERS*********************************
-    def on_start(self):
+    @task(10)
+    def create_account(self):
          if len(USER_CREDENTIALS) > 0:
             tuple = USER_CREDENTIALS.pop()
             ACTIVE_USERS.add(tuple[1],)
@@ -22,7 +23,7 @@ class UserBehavior(TaskSet):
             headers=headers,
             name = "Create new user")
 
-    @task(2)
+    @task(5)
     def deactivate_acc(self):
         if (len(ACTIVE_USERS) > 0):
             username = random.sample(ACTIVE_USERS,1)[0]
@@ -31,7 +32,7 @@ class UserBehavior(TaskSet):
             headers=headers,
             name = "Deactivate account")
 
-    @task(4)
+    @task(5)
     def decrement_karma(self):
         if (len(ACTIVE_USERS) > 0):
             username = random.sample(ACTIVE_USERS,1)
@@ -42,7 +43,7 @@ class UserBehavior(TaskSet):
             headers=headers,
             name = "Decrement karma")
 
-    @task(4)
+    @task(5)
     def increment_karma(self):
         if (len(ACTIVE_USERS) > 0):
             username = random.sample(ACTIVE_USERS,1)
@@ -88,15 +89,15 @@ class UserBehavior(TaskSet):
     def delete_post(self):
         if (len(SUBREDDIT)>0):
             headers = {'content-type': 'application/x-www-form-urlencoded'}
-            self.client.delete("/posts/remove_post/"+str(len(SUBREDDIT)),
+            self.client.delete("/posts/remove_post/"+str(len(SUBREDDIT)/2+1),
             headers=headers,
             name = "Delete post")
 
-    @task(5)
+    @task(4)
     def list_all_posts(self):
         self.client.get("/posts/list_all_posts", name = "List all posts")
 
-    @task(5)
+    @task(4)
     def list_sub_post(self):
         if (len(SUBREDDIT)>0):
             sub = random.sample(SUBREDDIT,1)[0]
@@ -109,7 +110,7 @@ class UserBehavior(TaskSet):
     def retrieve_post(self):
         if (len(SUBREDDIT)>0):
             headers = {'content-type': 'application/x-www-form-urlencoded'}
-            self.client.get("/posts/retrieve_post/"+str(len(SUBREDDIT)),
+            self.client.get("/posts/retrieve_post/"+str(len(SUBREDDIT)/2+1),
             headers=headers,
             name = "Retrieve post")
 

@@ -143,4 +143,5 @@ media
 static
 
 .vscode
-logs.db
+.DS_Store
+TestScripts/system_testing/__pycache__
